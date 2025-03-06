@@ -244,7 +244,7 @@ ul {
 /* logo with animation create by brian kidd 03.06.2025 */
 
 .main-logo {
-  width: 150px;
+  width: 100px;
   height: auto;
   cursor: pointer;
 }
@@ -253,8 +253,8 @@ ul {
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 150px;
-  left: 100px;
+  top: 100px;
+  left: 60px;
   /* the transform-style: preserve-3d is necessary to have 3d in css */
   /* when we are doing 3-d transforms on an object, the children of the object will be able to pass through the parent. or back face needs to be behind the parent. */
   transform-style: preserve-3d;
@@ -263,8 +263,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  --widthSize: 150px;
-  --heightSize: 240px;
+  --widthSize: 100px;
+  --heightSize: 160px;
   width: var(--widthSize);
   height: var(--heightSize);
   /*This positioning makes the square stack on top of each other */
