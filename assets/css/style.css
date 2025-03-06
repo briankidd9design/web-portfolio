@@ -241,6 +241,79 @@ ul {
   bottom: 20px;
   left: 49.4%;
 }
+/* logo with animation create by brian kidd 03.06.2025 */
+
+.main-logo {
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+}
+.cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 150px;
+  left: 100px;
+  /* the transform-style: preserve-3d is necessary to have 3d in css */
+  /* when we are doing 3-d transforms on an object, the children of the object will be able to pass through the parent. or back face needs to be behind the parent. */
+  transform-style: preserve-3d;
+}
+.side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --widthSize: 150px;
+  --heightSize: 240px;
+  width: var(--widthSize);
+  height: var(--heightSize);
+  /*This positioning makes the square stack on top of each other */
+  position: absolute;
+  /* background-color: hsla(200, 100%, 50%, 0.5); */
+  background-color: #f4f4f4;
+  /* transform 0 represents the translate, but we will translate all the sides on the z axis */
+  /* when we are doing 3-d transforms on an object, the children of the object will be able to pass through the parent. or back face needs to be behind the parent. */
+  transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0))
+    translateZ(calc(var(--heightSize) / 2));
+}
+
+.side.right {
+  /* since we rotated the right side 90deg, the z index is not front to back but left to right in relation to the right side of the cube */
+  /* transform: rotateY(90deg) translateZ(calc(var(--size) / 2)); */
+  --rotate-y: 90deg;
+  transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0))
+    translateZ(calc(var(--widthSize) / 2));
+}
+.side.left {
+  --rotate-y: -90deg;
+  transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0))
+    translateZ(calc(var(--widthSize) / 2));
+}
+
+.top {
+  --rotate-x: 90deg;
+}
+
+.bottom {
+  --rotate-x: -90deg;
+}
+
+.back {
+  --rotate-y: 180deg;
+}
+
+.cube:hover {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
 
 @-webkit-keyframes bounce {
   0% {
@@ -516,9 +589,9 @@ ul {
   padding: 10px 50px;
 }
 
-.header-section.sticky .logo img {
+/* .header-section.sticky .logo img {
   height: 55px;
-}
+} */
 
 .header-section.sticky .menu-list li a {
   color: #a0a0a0;
@@ -1501,6 +1574,9 @@ label.error {
 /* Tablet desktop :768px. */
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .cube {
+    display: none;
+  }
   .about-img {
     margin-bottom: 20px;
   }
@@ -1528,6 +1604,9 @@ label.error {
 /* Large Mobile :480px. */
 
 @media only screen and (max-width: 767px) {
+  .cube {
+    display: none;
+  }
   .service-item,
   .blog-item {
     margin-bottom: 30px;
@@ -1621,6 +1700,9 @@ label.error {
 /* small mobile :320px. */
 
 @media only screen and (max-width: 479px) {
+  .cube {
+    display: none;
+  }
   .stitle h2 {
     font-size: 30px;
   }
